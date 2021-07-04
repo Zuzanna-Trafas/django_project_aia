@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    {% load static %}
+    <img src="{% static "project/media/logo.png" %}" alt="logo" class="img-rounded" style="width:10%">
+    <div class="collapse navbar-collapse pl-3" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/accounts/home/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/">Tournaments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/accounts/sign_up">Sign up</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/accounts/login">Login<span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+    <form class="p-5" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <div class="d-flex flex-row">
+        <div class="p-2">
+            <input type="submit" class="btn btn-dark" value="Login">
+        </div>
+        <div class="p-2">
+            <a type="button" class="btn btn-light" href="/accounts/password_reset" role="button">Forgot your password?</a>
+        </div>
+        </div>
+    </form>
+</body>
+</html>

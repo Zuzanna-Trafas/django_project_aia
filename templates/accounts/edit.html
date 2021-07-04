@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <img src="{% static "project/media/logo.png" %}" alt="logo" class="img-rounded" style="width:10%">
+    <div class="collapse navbar-collapse pl-3" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Tournaments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/my_events/">My events</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout/">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="p-5">
+    <h2>Edit tournament</h2>
+    {% csrf_token %}
+    {% if error != "" %}
+        <div class="text-danger">
+            {{ error }}
+        </div>
+    {% endif %}
+    <form class="needs-validation" method="post">
+        {% csrf_token %}
+        <div class="form-group col-md-4">
+            <label for="name">Name *</label>
+            {{ form.name }}
+        </div>
+        <div class="form-group col-md-4">
+            <label for="discipline">Discipline *</label>
+            {{ form.discipline }}
+        </div>
+        <div class="form-group col-md-4">
+            <label for="time">Time *</label>
+            {{ form.time }}
+        </div>
+        <h5>Coords:</h5>
+        <div class="px-4">
+            <div class="form-group col-md-4">
+                <label for="lat">Latitude</label>
+                {{ form.lat }}
+            </div>
+            <div class="form-group col-md-4">
+                <label for="lng">Longitude</label>
+                {{ form.lng }}
+            </div>
+        </div>
+        <div class="ml-auto p-2 pb-5">
+            <button type="submit" class="btn btn-dark">Edit</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
